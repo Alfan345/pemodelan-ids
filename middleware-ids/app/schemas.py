@@ -2,7 +2,7 @@
 Pydantic schemas for request and response validation.
 """
 from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, ConfigDict, validator
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class PredictRequest(BaseModel):

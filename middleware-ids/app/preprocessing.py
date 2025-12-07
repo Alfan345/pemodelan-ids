@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import joblib
 from pathlib import Path
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Tuple
 
 
 class FlowPreprocessor:
@@ -49,7 +49,7 @@ class FlowPreprocessor:
         if not self.cols:
             raise ValueError("No columns found in transform_meta.json")
     
-    def validate_features(self, features: Dict[str, float]) -> tuple[bool, List[str]]:
+    def validate_features(self, features: Dict[str, float]) -> Tuple[bool, List[str]]:
         """
         Validate that all required features are present.
         

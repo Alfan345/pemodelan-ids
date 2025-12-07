@@ -30,7 +30,7 @@ class TestHealthEndpoints:
         assert "status" in data
         assert "model_loaded" in data
         assert "version" in data
-        assert data["model_loaded"] == True
+        assert data["model_loaded"]
 
 
 class TestModelEndpoints:
