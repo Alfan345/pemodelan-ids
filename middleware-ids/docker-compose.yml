@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  ids-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ids-middleware
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount artifacts directory
+      - ./artifacts:/app/artifacts:ro
+    environment:
+      - API_PREFIX=/api/v1
+      - APP_NAME=IDS Middleware API
+      - VERSION=1.0.0
+      - HOST=0.0.0.0
+      - PORT=8000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - ids-network
+
+networks:
+  ids-network:
+    driver: bridge
